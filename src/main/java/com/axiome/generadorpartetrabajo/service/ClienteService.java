@@ -25,8 +25,12 @@ public class ClienteService {
     }
 
     // Eliminar un cliente por ID
-    public void deleteCliente(Long clienteID) {
-        clienteRepository.deleteById(clienteID);
+    public boolean eliminarCliente(Long clienteID) {
+        if (clienteRepository.existsById(clienteID)) {
+            clienteRepository.deleteById(clienteID);
+            return true;  // Se eliminó exitosamente
+        }
+        return false;  // No se encontró el cliente
     }
 
     // Obtener un cliente por su ID
@@ -49,14 +53,5 @@ public class ClienteService {
             return clienteRepository.save(clienteActualizado);  // Guarda los cambios
         }
         return null;  // Si el cliente no existe, retorna null
-    }
-
-    // Eliminar un cliente y retornar true si se eliminó exitosamente
-    public boolean eliminarCliente(Long clienteID) {
-        if (clienteRepository.existsById(clienteID)) {
-            clienteRepository.deleteById(clienteID);
-            return true;  // Se eliminó exitosamente
-        }
-        return false;  // No se encontró el cliente
     }
 }

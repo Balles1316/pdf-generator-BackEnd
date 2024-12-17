@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/clientes")  // URL base para todas las operaciones de clientes
+@CrossOrigin(origins = "http://localhost:4200") // Permite solicitudes desde Angular
 public class ClienteController {
 
     @Autowired

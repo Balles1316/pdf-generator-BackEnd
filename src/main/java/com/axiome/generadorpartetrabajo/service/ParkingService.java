@@ -5,19 +5,52 @@ import com.axiome.generadorpartetrabajo.repository.ParkingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class ParkingService {
 
     @Autowired
     private ParkingRepository parkingRepository;
 
+    // Crear un nuevo parking
     public Parking crearParking(Parking parking) {
-        return parkingRepository.save(parking);  // Guarda el parking
+        return parkingRepository.save(parking);
     }
 
+    // Obtener todos los parkings
+    public List<Parking> obtenerTodosParkings() {
+        return parkingRepository.findAll();
+    }
+
+    // Obtener un parking por ID
     public Parking obtenerParking(Long parkingID) {
-        return parkingRepository.findById(parkingID).orElse(null);  // Obtiene un parking por su ID
+        Optional<Parking> optionalParking = parkingRepository.findById(parkingID);
+        return optionalParking.orElse(null);
     }
 
-    // Otros métodos personalizados si es necesario
+    // Actualizar un parking existente
+    public Parking actualizarParking(Long parkingID, Parking parkingDetalles) {
+        Optional<Parking> optionalParking = parkingRepository.findById(parkingID);
+        if (optionalParking.isPresent()) {
+            Parking parkingExistente = optionalParking.get();
+            parkingExistente.setNombre(parkingDetalles.getNombre());
+            parkingExistente.setCiudad(parkingDetalles.getCiudad());
+            parkingExistente.setProvincia(parkingDetalles.getProvincia());
+            parkingExistente.setCliente(parkingDetalles.getCliente());
+            return parkingRepository.save(parkingExistente);
+        }
+        return null;
+    }
+
+    // Eliminar un parking por ID
+    public boolean eliminarParking(Long parkingID) {
+        Optional<Parking> optionalParking = parkingRepository.findById(parkingID);
+        if (optionalParking.isPresent()) {
+            parkingRepository.deleteById(parkingID);
+            return true;
+        }
+        return false;
+    }
 }

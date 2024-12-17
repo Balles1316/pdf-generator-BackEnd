@@ -18,7 +18,7 @@ public class Parking {
     @Column(nullable = false)
     private String provincia;
 
-    @ManyToOne
+    @ManyToOne(optional = false) // Esto asegura que siempre se requiera un cliente asociado
     @JoinColumn(name = "cliente_id", nullable = false)
     private Cliente cliente;
 
