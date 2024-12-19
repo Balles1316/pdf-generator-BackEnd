@@ -13,13 +13,19 @@ public class Parking {
     private String nombre;
 
     @Column(nullable = false)
-    private String ciudad;
+    private String localidad;
 
     @Column(nullable = false)
     private String provincia;
 
+    @Column(nullable = false)
+    private String direccion;
+
+    @Column(nullable = false)
+    private double codigoParking;
+
     @ManyToOne(optional = false) // Esto asegura que siempre se requiera un cliente asociado
-    @JoinColumn(name = "cliente_id", nullable = false)
+    @JoinColumn(name = "clienteID", nullable = false)
     private Cliente cliente;
 
     //Getter y Setter
@@ -39,14 +45,6 @@ public class Parking {
         this.nombre = nombre;
     }
 
-    public String getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
-    }
-
     public String getProvincia() {
         return provincia;
     }
@@ -62,4 +60,16 @@ public class Parking {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
+    public String getLocalidad() {return localidad;}
+
+    public void setLocalidad(String localidad) {this.localidad = localidad;}
+
+    public double getCodigoParking() {return codigoParking;}
+
+    public void setCodigoParking(double codigoParking) {this.codigoParking = codigoParking;}
+
+    public String getDireccion() {return direccion;}
+
+    public void setDireccion(String direccion) {this.direccion = direccion;}
 }

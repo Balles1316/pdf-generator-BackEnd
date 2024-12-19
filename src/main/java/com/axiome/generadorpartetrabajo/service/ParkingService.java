@@ -36,8 +36,10 @@ public class ParkingService {
         if (optionalParking.isPresent()) {
             Parking parkingExistente = optionalParking.get();
             parkingExistente.setNombre(parkingDetalles.getNombre());
-            parkingExistente.setCiudad(parkingDetalles.getCiudad());
+            parkingExistente.setLocalidad(parkingDetalles.getLocalidad());
             parkingExistente.setProvincia(parkingDetalles.getProvincia());
+            parkingExistente.setDireccion(parkingDetalles.getDireccion());
+            parkingExistente.setCodigoParking(parkingDetalles.getCodigoParking());
             parkingExistente.setCliente(parkingDetalles.getCliente());
             return parkingRepository.save(parkingExistente);
         }

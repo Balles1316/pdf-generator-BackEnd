@@ -26,28 +26,13 @@ public class ParteTrabajo {
     private Incidencia incidencia;
 
     // Getters y setters
-    public Long getParteID() {
-        return parteID;
+
+    public int getNumeroTecnicos() {
+        return numeroTecnicos;
     }
 
-    public void setParteID(Long parteID) {
-        this.parteID = parteID;
-    }
-
-    public LocalDate getFechaParte() {
-        return fechaParte;
-    }
-
-    public void setFechaParte(LocalDate fechaParte) {
-        this.fechaParte = fechaParte;
-    }
-
-    public String getDescripcionTrabajo() {
-        return descripcionTrabajo;
-    }
-
-    public void setDescripcionTrabajo(String descripcionTrabajo) {
-        this.descripcionTrabajo = descripcionTrabajo;
+    public void setNumeroTecnicos(int numeroTecnicos) {
+        this.numeroTecnicos = numeroTecnicos;
     }
 
     public int getHorasTrabajadas() {
@@ -58,12 +43,28 @@ public class ParteTrabajo {
         this.horasTrabajadas = horasTrabajadas;
     }
 
-    public int getNumeroTecnicos() {
-        return numeroTecnicos;
+    public String getDescripcionTrabajo() {
+        return descripcionTrabajo;
     }
 
-    public void setNumeroTecnicos(int numeroTecnicos) {
-        this.numeroTecnicos = numeroTecnicos;
+    public void setDescripcionTrabajo(String descripcionTrabajo) {
+        this.descripcionTrabajo = descripcionTrabajo;
+    }
+
+    public LocalDate getFechaParte() {
+        return fechaParte;
+    }
+
+    public void setFechaParte(LocalDate fechaParte) {
+        this.fechaParte = fechaParte;
+    }
+
+    public Long getParteID() {
+        return parteID;
+    }
+
+    public void setParteID(Long parteID) {
+        this.parteID = parteID;
     }
 
     public Incidencia getIncidencia() {
